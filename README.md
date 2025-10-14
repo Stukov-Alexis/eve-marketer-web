@@ -2,7 +2,7 @@
 
 WARNING STILL IN DEVELOPMENT
 [FOR TRAINING PURPOSE]
-
+---------------------------------------------------------------------------------------------------------------------
 A modern Next.js web application for EVE Online market analysis, featuring real-time data from the EVE ESI API.
 
 ## Features
