@@ -67,7 +67,7 @@ export default function Home() {
             🌌 EVE MARKET NEXUS 🌌
           </div>
           <div className="text-xl text-blue-200 font-light">
-            Real-time Market Analysis for New Eden's Elite Traders
+            Real-time Market Analysis for New Eden&apos;s Elite Traders
           </div>
           <div className="text-sm text-gray-400 mt-2">
             Powered by EVE Online ESI API • Built for Capsuleers

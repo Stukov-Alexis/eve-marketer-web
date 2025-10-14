@@ -94,7 +94,11 @@ export class MarketAnalyzer {
       .sort((a, b) => a.price - b.price);
 
     // Price inversions (arbitrage opportunities)
-    const priceInversions = [];
+    const priceInversions: Array<{
+      buy_price: number;
+      sell_price: number;
+      arbitrage_opportunity: number;
+    }> = [];
     if (buyOrders.length > 0 && sellOrders.length > 0) {
       const highestBuy = buyOrders[0].price;
       const lowestSell = sellOrders[0].price;
@@ -118,7 +122,10 @@ export class MarketAnalyzer {
     );
 
     // Price gaps (significant gaps between order prices)
-    const priceGaps = [];
+    const priceGaps: Array<{
+      gap_size: number;
+      gap_percentage: number;
+    }> = [];
     for (let i = 0; i < sellOrders.length - 1; i++) {
       const currentPrice = sellOrders[i].price;
       const nextPrice = sellOrders[i + 1].price;
@@ -134,7 +141,11 @@ export class MarketAnalyzer {
     }
 
     // Volume spikes in historical data
-    const volumeSpikes = [];
+    const volumeSpikes: Array<{
+      date: string;
+      volume: number;
+      average_volume: number;
+    }> = [];
     if (history.length > 7) {
       const averageHistoricalVolume = history
         .slice(-30) // Last 30 days

@@ -1,6 +1,6 @@
 'use client';
 
-import { MarketAnalysis, MarketOrder, TradingCalculation, MarketAnomalies } from '@/types/eve';
+import { MarketAnalysis, TradingCalculation, MarketAnomalies } from '@/types/eve';
 
 interface MarketAnalysisProps {
   analysis: MarketAnalysis;

@@ -16,7 +16,7 @@ class ESIClient {
     this.lastRequestTime = Date.now();
   }
 
-  private async makeRequest<T>(endpoint: string, params?: Record<string, any>): Promise<T | null> {
+  private async makeRequest<T>(endpoint: string, params?: Record<string, unknown>): Promise<T | null> {
     await this.rateLimit();
 
     const url = new URL(`${this.baseUrl}${endpoint}`);
@@ -60,7 +60,7 @@ class ESIClient {
     const majorRegionIds = regionIds.slice(0, 20); // Limit to avoid too many requests
     
     for (const regionId of majorRegionIds) {
-      const regionInfo = await this.makeRequest<any>(`/universe/regions/${regionId}/`);
+      const regionInfo = await this.makeRequest<{name: string; description?: string}>(`/universe/regions/${regionId}/`);
       if (regionInfo && regionInfo.name) {
         regions.push({
           region_id: regionId,
@@ -74,7 +74,7 @@ class ESIClient {
   }
 
   async searchItems(searchTerm: string): Promise<ItemType[]> {
-    const searchData = await this.makeRequest<any>('/search/', {
+    const searchData = await this.makeRequest<{inventory_type?: number[]}>('/search/', {
       categories: 'inventory_type',
       search: searchTerm,
       strict: false,
@@ -86,7 +86,7 @@ class ESIClient {
     const typeIds = searchData.inventory_type.slice(0, 20); // Limit results
 
     for (const typeId of typeIds) {
-      const itemInfo = await this.makeRequest<any>(`/universe/types/${typeId}/`);
+      const itemInfo = await this.makeRequest<{name: string; description?: string; published: boolean}>(`/universe/types/${typeId}/`);
       if (itemInfo && itemInfo.published) {
         items.push({
           type_id: typeId,
@@ -118,7 +118,7 @@ class ESIClient {
   }
 
   async getItemInfo(typeId: number): Promise<ItemType | null> {
-    const itemInfo = await this.makeRequest<any>(`/universe/types/${typeId}/`);
+    const itemInfo = await this.makeRequest<{name: string; description?: string; published: boolean}>(`/universe/types/${typeId}/`);
     
     if (!itemInfo) return null;
 
