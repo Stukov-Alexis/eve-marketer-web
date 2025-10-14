@@ -1,26 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --eve-blue: #4a9eff;
+  --eve-cyan: #7ce88b;
+  --eve-red: #ffa8a3;
+  --eve-orange: #f2cc60;
+  --eve-purple: #b794f6;
+  --background: #0a0e1a;
+  --foreground: #ededed;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: 'Exo 2', sans-serif;
+  --font-mono: 'Orbitron', monospace;
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(
+    135deg,
+    rgb(10, 14, 26) 0%,
+    rgb(26, 31, 46) 100%
+  );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Exo 2', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* EVE Online inspired glowing effects */
+.glow {
+  text-shadow: 0 0 10px var(--eve-blue), 0 0 20px var(--eve-blue), 0 0 30px var(--eve-blue);
+}
+
+.glow-border {
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.3), inset 0 0 15px rgba(74, 158, 255, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 31, 46, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--eve-blue) 0%, var(--eve-purple) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--eve-cyan) 0%, var(--eve-blue) 100%);
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-track {
+  background: rgba(74, 158, 255, 0.2);
+  height: 6px;
+  border-radius: 3px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--eve-blue) 0%, var(--eve-purple) 100%);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(74, 158, 255, 0.8);
+}
+
+/* Animated background for loading states */
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Space-themed animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(74, 158, 255, 0.3);
+  color: white;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--eve-cyan);
+  outline-offset: 2px;
 }

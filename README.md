@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌌 EVE Market Nexus - Web Application
+
+A modern Next.js web application for EVE Online market analysis, featuring real-time data from the EVE ESI API.
+
+## Features
+
+- **🚀 Real-time Market Data**: Live market orders and pricing from EVE ESI API
+- **📊 Advanced Analysis**: Profit calculations, market trends, and trading recommendations
+- **💰 Investment Calculator**: Calculate potential profits with EVE's tax system
+- **⚠️ Anomaly Detection**: Identify arbitrage opportunities and market inefficiencies
+- **🎨 EVE Online Theme**: Authentic space-themed UI matching EVE's design language
+- **📱 Responsive Design**: Works on desktop, tablet, and mobile devices
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Start the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. **Select Region**: Choose your trading region (defaults to The Forge/Jita)
+2. **Search Items**: Search for specific items or browse popular trading commodities
+3. **Set Investment**: Adjust your investment amount using the slider
+4. **Analyze**: Click "Analyze Market" to get comprehensive market data
 
-To learn more about Next.js, take a look at the following resources:
+## API Endpoints
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `GET /api/regions` - Fetch all EVE regions
+- `GET /api/items?search=<term>` - Search for items
+- `GET /api/items?popular=true` - Get popular trading items
+- `GET /api/market?regionId=<id>&typeId=<id>&investmentAmount=<amount>` - Get market analysis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technology Stack
 
-## Deploy on Vercel
+- **Framework**: Next.js 15 with TypeScript
+- **Styling**: Tailwind CSS with custom EVE theme
+- **API**: EVE Online ESI (EVE Swagger Interface)
+- **Data Analysis**: Custom market analysis algorithms
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## EVE Online Integration
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This application uses the official EVE Online ESI API to provide:
+- Real-time market orders
+- Historical price data
+- Item information
+- Region data
+
+## Features Overview
+
+### Market Analysis
+- Buy/sell order analysis
+- Profit margin calculations
+- Market spread analysis
+- Volume indicators
+
+### Trading Calculator
+- Investment amount optimization
+- EVE tax calculations (5% broker fee, 8% sales tax)
+- ROI projections
+- Unit calculations
+
+### Anomaly Detection
+- Price inversions (arbitrage opportunities)
+- Large volume orders
+- Price gaps
+- Volume spikes
+
+### AI Recommendations
+- Market trend analysis
+- Trading suggestions
+- Risk assessment
+- Timing recommendations
+
+## Development
+
+### Project Structure
+```
+src/
+├── app/
+│   ├── api/           # API routes
+│   ├── globals.css    # Global styles
+│   ├── layout.tsx     # Root layout
+│   └── page.tsx       # Home page
+├── components/        # React components
+├── lib/              # Utilities and API clients
+└── types/            # TypeScript definitions
+```
+
+### Building for Production
+
+```bash
+npm run build
+npm start
+```
+
+## Legal Notice
+
+This application is not affiliated with or endorsed by CCP Games. EVE Online and all related marks are trademarks of CCP hf.
+
+## License
+
+This project is for educational purposes. EVE Online data is provided under CCP Games' ESI API terms.
+
+---
+
+**Disclaimer**: Use this tool for informational purposes only. Always conduct your own research before making trading decisions in EVE Online.
