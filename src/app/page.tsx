@@ -121,6 +121,7 @@ export default function Home() {
             </div>
             <div className="text-xs text-gray-500">
               Data sourced from the official EVE ESI API • For educational purposes
+              I hate this place, i hate you
             </div>
           </div>
         </footer>
